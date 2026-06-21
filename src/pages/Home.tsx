@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import teacher from "../assets/images/teacher1.png";
 
@@ -11,21 +10,13 @@ const PackageIcon = () => (
 );
 
 const Home = () => {
-  const [items, setItems] = useState<any[]>([]);
   const navigate = useNavigate();
 
-  const fetchAllItems = async () => {
-    try {
-      const res = await axios.get("https://dds-be.vercel.app/api/v1/items");
-      if (res.data) setItems(res.data);
-    } catch (err) {
-      console.error("Failed to fetch items:", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchAllItems();
-  }, []);
+  const items = [
+    { _id: "1", name: "Basic Package", description: "Practical instruction covering test procedures, road signs, and defensive driving." },
+    { _id: "2", name: "Standard Package", description: "Comprehensive training with mock tests and highway driving experience." },
+    { _id: "3", name: "Premium Package", description: "Full course with guaranteed test preparation and flexible scheduling." },
+  ];
 
   return (
     <div className="min-h-screen font-sans antialiased overflow-x-hidden bg-white text-[#111827]">
@@ -123,7 +114,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Floating badges like in the reference */}
         <div className="absolute bottom-12 left-12 hidden lg:block bg-white/95 backdrop-blur rounded-3xl p-5 shadow-2xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-[#15803d] rounded-2xl flex items-center justify-center text-white text-3xl">✓</div>
@@ -157,7 +147,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ── SUPPORT / ABOUT SECTION ── */}
+      {/* ── ABOUT SECTION ── */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <span className="uppercase text-xs tracking-[3px] font-bold text-[#15803d]">ESTABLISHED 2012</span>
@@ -181,12 +171,11 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Green accent box like in reference */}
         <div className="relative">
           <div className="bg-gradient-to-br from-[#15803d] to-[#4ade80] text-white p-10 rounded-3xl h-full flex flex-col justify-center">
             <div className="uppercase text-sm tracking-widest opacity-75 mb-2">SUPPORT AT EVERY STAGE</div>
             <div className="text-3xl font-bold leading-tight">
-              From beginner to test-ready — we’ve got you covered
+              From beginner to test-ready — we've got you covered
             </div>
             <div className="mt-8 text-sm opacity-90">
               Expert instructors • Modern fleet • Guaranteed results
@@ -224,7 +213,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ── PACKAGES ── (unchanged logic, updated design) */}
+      {/* ── PACKAGES ── */}
       <div id="packages" className="max-w-7xl mx-auto py-24 px-6 scroll-mt-20">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
@@ -237,46 +226,35 @@ const Home = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.length > 0 ? (
-            items.map((item: any, index: number) => (
-              <div
-                key={item._id || index}
-                className="group bg-white border border-gray-100 rounded-3xl overflow-hidden hover:border-[#86efac] hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="h-1.5 bg-gradient-to-r from-[#15803d] to-[#4ade80] w-0 group-hover:w-full transition-all" />
-
-                <div className="p-8">
-                  <div className="flex items-start gap-5">
-                    <div className="p-4 bg-[#f0fdf4] rounded-2xl text-[#15803d]">
-                      <PackageIcon />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-2xl leading-tight">{item.name || "Full Course"}</h4>
-                      <div className="text-sm text-gray-400 mt-1">Standard • Comprehensive</div>
-                    </div>
+          {items.map((item, index) => (
+            <div
+              key={item._id || index}
+              className="group bg-white border border-gray-100 rounded-3xl overflow-hidden hover:border-[#86efac] hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="h-1.5 bg-gradient-to-r from-[#15803d] to-[#4ade80] w-0 group-hover:w-full transition-all" />
+              <div className="p-8">
+                <div className="flex items-start gap-5">
+                  <div className="p-4 bg-[#f0fdf4] rounded-2xl text-[#15803d]">
+                    <PackageIcon />
                   </div>
-
-                  <p className="mt-8 text-gray-600 text-[15px] leading-relaxed">
-                    {item.description || "Practical instruction covering test procedures, road signs, and defensive driving."}
-                  </p>
-                </div>
-
-                <div className="border-t p-6 flex items-center justify-between bg-gray-50">
-                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-medium">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                    AVAILABLE NOW
+                  <div>
+                    <h4 className="font-bold text-2xl leading-tight">{item.name}</h4>
+                    <div className="text-sm text-gray-400 mt-1">Standard • Comprehensive</div>
                   </div>
-                  <button className="text-[#15803d] font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                    DETAILS →
-                  </button>
                 </div>
+                <p className="mt-8 text-gray-600 text-[15px] leading-relaxed">{item.description}</p>
               </div>
-            ))
-          ) : (
-            <div className="col-span-full py-20 text-center text-gray-400 border border-dashed border-gray-200 rounded-3xl">
-              No packages loaded yet
+              <div className="border-t p-6 flex items-center justify-between bg-gray-50">
+                <div className="flex items-center gap-2 text-sm text-emerald-600 font-medium">
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                  AVAILABLE NOW
+                </div>
+                <button className="text-[#15803d] font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                  DETAILS →
+                </button>
+              </div>
             </div>
-          )}
+          ))}
         </div>
       </div>
 
@@ -289,7 +267,6 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Instructor 1 */}
             <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-[#86efac] transition-all group">
               <div
                 className="h-80 bg-cover bg-center relative"
@@ -307,13 +284,10 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Instructor 2 */}
             <div className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-[#86efac] transition-all group">
               <div
                 className="h-80 bg-cover bg-center relative"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200')`,
-                }}
+                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200')` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-6 left-6">
