@@ -37,7 +37,7 @@ const Login = () => {
   const handleGoogleSuccess = async (credentialResponse: any) => {
     const idToken = credentialResponse.credential;
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/google-check", { token: idToken });
+      const res = await axios.post("https://dds-be.vercel.app/v1/auth/google-check", { token: idToken });
       if (res.data.status === "SUCCESS") {
         localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
         localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);

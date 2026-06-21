@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://diniru-driving-training-school.vercel.app/api/v1"
+  baseURL: "https://dds-be.vercel.app/api/v1"
 })
 
 const PUBLIC_ENDPOINTS = ["/auth/login", "/auth/register", "/auth/refresh"]

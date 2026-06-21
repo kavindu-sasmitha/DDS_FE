@@ -16,7 +16,7 @@ const Home = () => {
 
   const fetchAllItems = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/items");
+      const res = await axios.get("https://dds-be.vercel.app/api/v1/items");
       if (res.data) setItems(res.data);
     } catch (err) {
       console.error("Failed to fetch items:", err);
