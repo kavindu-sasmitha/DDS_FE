@@ -134,7 +134,7 @@ const Home = () => {
       <div className="bg-[#f8fafc] border-y py-8">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6">
           {[
-            { value: "800+", label: "Students Licensed" },
+            { value: "50000+", label: "Students Licensed" },
             { value: "99%", label: "Pass Rate" },
             { value: "15+", label: "Training Vehicles" },
             { value: "12+", label: "Years Experience" },
@@ -322,7 +322,7 @@ const Home = () => {
               href="tel:0771234567"
               className="border border-white/50 hover:bg-white/10 font-semibold px-12 py-5 rounded-3xl text-lg transition-all"
             >
-              CALL 0702500355/0717870101
+              CALL 0702500355 / 0717870101
             </a>
           </div>
         </div>
