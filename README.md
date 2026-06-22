@@ -1,75 +1,54 @@
-# React + TypeScript + Vite
+# Diniru Driving Training School - Backend API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure, scalable, and robust RESTful API built entirely with Node.js, Express, and TypeScript according to Rapid Application Development (RAD) principles. This backend powers the driving school management application, handling roles, authentication vectors, and data models with MongoDB Atlas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Deployed URLs
 
-## React Compiler
+* **Live Backend API:** [https://dds-be.vercel.app](https://dds-be.vercel.app)
+* **Live Frontend:** [https://dds-fe.vercel.app](https://dds-fe.vercel.app)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🚀 Key Features
 
-## Expanding the ESLint configuration
+* **Advanced Role-Based Security:** Fully decoupled authorization matrix supporting dynamic access controls for `STUDENT` and `ADMIN` users.
+* **Hybrid Authentication Mechanism:**
+  * Native secure signup/login using password hashing via **bcryptjs** and native **JWT** vectors.
+  * Integration with **Google OAuth 2.0** verification workflow issuing internal system-level tokens.
+* **Never-Expiring Admin Access:** Custom token utility architecture ensuring a permanent token lifecycle for the `ADMIN` role, paired with an optimized lifespan for student access tokens.
+* **Granular Database Layer:** Clean, relational document modeling leveraging Mongoose with unique indexing for student NIC numbers and email fields.
+* **Comprehensive Student Profiling:** Direct API abstractions allowing administrators to fetch structured student profiles by utilizing either their DB Object ID, NIC number, or Registered Phone Number.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack & Tools
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Runtime Environment:** Node.js
+* **Framework:** Express.js with TypeScript compilation
+* **Database Object Modeling:** Mongoose & MongoDB Atlas (Cloud Database)
+* **Security & Cryptography:** JSON Web Tokens (JWT), bcryptjs
+* **Authentication Service:** Google Auth Library (`google-auth-library`)
+* **Environment Configuration:** dotenv
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 System Architecture & Folder Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Adheres strictly to the standard industry boilerplate configuration for server separation:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```text
+backend/
+├── src/
+│   ├── config/       # Database connections & environment initializations
+│   ├── controllers/  # Route managers executing logical requests (authController.ts)
+│   ├── middleware/   # Request interceptors & authentication guards (authMiddleware.ts)
+│   ├── models/       # Schema blueprints definition (userModel.ts, studentModel.ts)
+│   ├── routes/       # Explicit endpoint declarations mapping
+│   ├── services/     # Pure database query orchestration layers (authService.ts)
+│   ├── util/         # Helper functions (token token.ts processing)
+│   └── index.ts      # Application execution master node
+├── .env.example      # System environmental structural blueprint
+├── package.json      # Project dependencies configuration
+└── tsconfig.json     # Strict static compilation definitions
