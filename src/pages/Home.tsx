@@ -150,7 +150,7 @@ const Home = () => {
       {/* ── ABOUT SECTION ── */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <span className="uppercase text-xs tracking-[3px] font-bold text-[#15803d]">ESTABLISHED 2012</span>
+          <span className="uppercase text-xs tracking-[3px] font-bold text-[#15803d]">ESTABLISHED 2010</span>
           <h2 className="text-5xl font-black tracking-tighter mt-4 leading-none">
             YOUR PARTNER IN<br />SAFE DRIVING
           </h2>
@@ -280,7 +280,7 @@ const Home = () => {
               <div className="p-8">
                 <h4 className="font-bold text-2xl">Mr. Prabath Weerathunga</h4>
                 <div className="text-xs text-gray-400 font-mono mt-1">RMV/DIR/748</div>
-                <p className="mt-4 text-gray-600">10+ years experience in heavy and light vehicle training.</p>
+                <p className="mt-4 text-gray-600">16+ years experience in heavy and light vehicle training.</p>
               </div>
             </div>
 
@@ -295,7 +295,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="p-8">
-                <h4 className="font-bold text-2xl">Mrs. Deepani Silva</h4>
+                <h4 className="font-bold text-2xl">Mrs. Nimeshi Lakshara</h4>
                 <div className="text-xs text-gray-400 font-mono mt-1">RMV/DIR/902</div>
                 <p className="mt-4 text-gray-600">Specialized in beginner training and RMV test preparation.</p>
               </div>
@@ -309,7 +309,7 @@ const Home = () => {
         <div className="max-w-3xl mx-auto text-center px-6 relative z-10">
           <span className="uppercase tracking-[3px] text-[#4ade80] text-sm font-bold">READY TO START?</span>
           <h3 className="text-5xl font-black tracking-tighter mt-6">Get Your License With Confidence</h3>
-          <p className="mt-6 text-lg text-white/70">Join 800+ successful students</p>
+          <p className="mt-6 text-lg text-white/70">Join 50000+ successful students</p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center mt-12">
             <button
@@ -322,7 +322,7 @@ const Home = () => {
               href="tel:0771234567"
               className="border border-white/50 hover:bg-white/10 font-semibold px-12 py-5 rounded-3xl text-lg transition-all"
             >
-              CALL 077 123 4567
+              CALL 0702500355/0717870101
             </a>
           </div>
         </div>
